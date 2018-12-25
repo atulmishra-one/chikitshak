@@ -1,0 +1,38 @@
+version: '3'
+
+services:
+  db:
+    image: postgres
+    environment:
+      - POSTGRES_USER=chikitshak
+      - POSTGRES_PASSWORD=chikitshak
+      - POSTGRES_DB=chikitshak
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgresql-data:/var/lib/postgresql/data
+    restart: always
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - .:/srv/chikitshak
+    ports:
+      - "8000:8000"
+    command: bash -c "uwsgi --ini uwsgi.ini --http :8000"
+    depends_on:
+      - db
+    restart: always
+  server:
+    image: nginx
+    ports:
+      - "80:80"
+    volumes:
+      - ./static:/srv/chikitshak/static
+      - ./nginx:/etc/nginx/conf.d
+      - ./nginx/chikitshaknginx.conf:/etc/nginx/sites-enabled
+    restart: always
+
+volumes:
+  postgresql-data:

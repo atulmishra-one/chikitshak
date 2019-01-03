@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block section %}
+<section class="section is-medium">
+    <div class="container">
+      <h1 class="title">Chikitshak</h1>
+      <h2 class="subtitle">
+        Hassle Free Appointments with Trusted Doctors.
+      </h2>
+      <hr>
+      <section class="hero is-bold">
+          <div class="hero-body">
+            <div class="container">
+             <div class="field is-grouped is-horizontal">
+                  <p class="control has-icons-left has-icons-right is-expanded">
+                            <input class="input is-medium" type="email" placeholder="Search health keyword..">
+                            <span class="icon is-small is-left">
+                                <i class="fas fa-search fa-xs"></i>
+                            </span>
+                  </p>
+
+                  <p class="control has-icons-left">
+                            <span class="select is-medium">
+                              <select>
+                                <option selected>Near me</option>
+                                <option>Select dropdown</option>
+                                <option>With options</option>
+                              </select>
+                            </span>
+                            <span class="icon is-small is-left">
+                                  <i class="fas fa-globe"></i>
+                            </span>
+                        </p>
+                  <p class="control">
+                    <a class="button is-primary is-medium">
+                      Search
+                    </a>
+                  </p>
+            </div>
+
+            <p class="help">Topics: Dengue fever Asthma Infertility Diabetes Dehydration</p>
+
+            </div>
+          </div>
+    </section>
+    </div>
+</section>
+
+{% endblock %}

@@ -2,7 +2,7 @@ version: '3'
 
 services:
   db:
-    image: postgres
+    image: kartoza/postgis
     environment:
       - POSTGRES_USER=chikitshak
       - POSTGRES_PASSWORD=chikitshak
@@ -19,8 +19,8 @@ services:
     volumes:
       - .:/srv/chikitshak
     ports:
-      - "8000:8000"
-    command: bash -c "uwsgi --ini uwsgi.ini --http :8000"
+      - "9000:9000"
+    command: bash -c "uwsgi --ini uwsgi.ini --http :9000"
     depends_on:
       - db
     restart: always
@@ -33,6 +33,15 @@ services:
       - ./nginx:/etc/nginx/conf.d
       - ./nginx/chikitshaknginx.conf:/etc/nginx/sites-enabled
     restart: always
+  redis:
+    image: redis
+    container_name: redis
+    hostname: redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-data:/data
 
 volumes:
   postgresql-data:
+  redis-data:

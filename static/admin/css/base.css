@@ -775,11 +775,11 @@ table#change-history tbody th {
 }
 
 #content {
-    padding: 20px 40px;
+    padding: 40px 80px;
 }
 
 .dashboard #content {
-    width: 600px;
+    width: 800px;
 }
 
 #content-main {

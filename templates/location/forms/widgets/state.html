@@ -1,0 +1,6 @@
+<select name="state" id="id_state">
+    <option>------</option>
+    <option v-for="state in states" v-bind:value="state.id">
+        [[state.name]]
+    </option>
+</select>
